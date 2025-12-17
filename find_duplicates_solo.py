@@ -16,7 +16,11 @@ def list_files(path: str) -> list[str]:
         list[str]: A list of file paths found in the directory and its subdirectories.
     """
     # Run "pytest find_duplicates_solo.py -k list_files" to test your implementation
-    raise NotImplementedError()
+    file_list = []
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            file_list.append(os.path.join(root, file))
+    return file_list
 
 
 def hash_file(file_path: str) -> str:
